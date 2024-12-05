@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     padding: 30
   },
   buttonView:{
-    backgroundColor: 'brown',
+    backgroundColor: '#1E90FF',
     padding: 10,
     alignItems: "center",
     justifyContent: "center",
