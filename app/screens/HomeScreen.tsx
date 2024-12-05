@@ -1,23 +1,25 @@
-import { Button, FlatList, StyleSheet, Text, View } from 'react-native'
+import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useContext } from 'react'
 import { Context } from '@/context/BlogContext'
 import EvilIcons from '@expo/vector-icons/EvilIcons';
 
 export default function HomeScreen() {
-  const { state, addBlogPost } = useContext(Context);
+  const { state, addBlogPost, deleteBlogPost } = useContext(Context);
   return (
     <View>
       {/* <Text>HomeScreen</Text> */}
       <Button title='Ekle' onPress={addBlogPost} />
       <FlatList
         data={state}
-        keyExtractor={blogPost => blogPost.title}
+        keyExtractor={blogPost => blogPost.id}
         renderItem={({ item }) => {
 
           return (
           <View style={styles.row}>
             <Text style={styles.title}>{item.title}</Text>
-            <EvilIcons name="trash" size={30} color="black" />
+            <TouchableOpacity onPress={()=>deleteBlogPost(item.id)}>
+              <EvilIcons name="trash" size={30} color="black" />
+            </TouchableOpacity>
           </View>
           );
         }}
