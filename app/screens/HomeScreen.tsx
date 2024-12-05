@@ -8,7 +8,11 @@ export default function HomeScreen({navigation}) {
 
   useEffect(() => {
     getBlogPost();
-    console.log(state)
+
+    const listener = navigation.addListener('focus', ()=>{
+      getBlogPost();
+    })
+    return () => {listener.remove();} 
   }, []);
 
   return (
