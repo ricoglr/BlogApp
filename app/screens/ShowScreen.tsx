@@ -10,6 +10,7 @@ export default function ShowScreen({route}) {
   return (
     <View>
       <Text>{blogPost.title}</Text>
+      <Text>{blogPost.content}</Text>
     </View>
   )
 }

@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, {useState} from 'react'
 
-const BlogPostForm = () => {
+const BlogPostForm = ({onSubmit}) => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   return (
@@ -11,8 +11,9 @@ const BlogPostForm = () => {
 
       <Text style={styles.label}>İçeriği giriniz: </Text>
       <TextInput style={styles.input} value={content} onChangeText={(text)=> setContent(text)}/>
+
       <View style={styles.buttonMain}>
-        <TouchableOpacity style={styles.buttonView}>
+        <TouchableOpacity style={styles.buttonView} onPress={()=>onSubmit(title, content)}>
           <Text style={styles.buttonText}>Kaydet</Text>
         </TouchableOpacity>
       </View>
