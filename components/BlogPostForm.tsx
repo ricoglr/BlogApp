@@ -1,9 +1,10 @@
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, {useState} from 'react'
 
-const BlogPostForm = ({onSubmit}) => {
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
+export default function BlogPostForm({onSubmit, initialValues}) {
+  const [title, setTitle] = useState(initialValues ? initialValues.title: '');
+  const [content, setContent] = useState(initialValues ? initialValues.content: '');
+
   return (
     <View style={styles.main}>
       <Text style={styles.label}>Başlığı giriniz: </Text>
@@ -20,8 +21,6 @@ const BlogPostForm = ({onSubmit}) => {
     </View>
   )
 }
-
-export default BlogPostForm
 
 const styles = StyleSheet.create({
   main: {
