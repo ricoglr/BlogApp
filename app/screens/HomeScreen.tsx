@@ -3,10 +3,10 @@ import React, { useContext } from 'react'
 import { Context } from '@/context/BlogContext'
 import EvilIcons from '@expo/vector-icons/EvilIcons';
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   const { state, addBlogPost, deleteBlogPost } = useContext(Context);
   return (
-    <View>
+    <View> 
       {/* <Text>HomeScreen</Text> */}
       <Button title='Ekle' onPress={addBlogPost} />
       <FlatList
@@ -15,12 +15,14 @@ export default function HomeScreen() {
         renderItem={({ item }) => {
 
           return (
-          <View style={styles.row}>
-            <Text style={styles.title}>{item.title}</Text>
-            <TouchableOpacity onPress={()=>deleteBlogPost(item.id)}>
-              <EvilIcons name="trash" size={30} color="black" />
+            <TouchableOpacity onPress={()=>navigation.navigate('Show', {id:item.id})}>
+              <View style={styles.row}>
+                <Text style={styles.title}>{item.title}</Text>
+                <TouchableOpacity onPress={()=>deleteBlogPost(item.id)}>
+                  <EvilIcons name="trash" size={30} color="black" />
+                </TouchableOpacity>
+              </View>
             </TouchableOpacity>
-          </View>
           );
         }}
       />
