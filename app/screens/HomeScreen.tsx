@@ -1,10 +1,16 @@
 import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Context } from '@/context/BlogContext'
 import EvilIcons from '@expo/vector-icons/EvilIcons';
 
 export default function HomeScreen({navigation}) {
-  const { state, addBlogPost, deleteBlogPost } = useContext(Context);
+  const { state, addBlogPost, deleteBlogPost, getBlogPost } = useContext(Context);
+
+  useEffect(() => {
+    getBlogPost();
+    console.log(state)
+  }, []);
+
   return (
     <View> 
       <FlatList
