@@ -13,7 +13,7 @@ const EditScreen = ({route}) => {
   }
   
   return (
-    <BlogPostForm initialValues={{title: blogPost.title, content:blogPost.content}}></BlogPostForm>
+    <BlogPostForm isEditable={true} initialValues={{title: blogPost.title, content:blogPost.content}}></BlogPostForm>
   );
 }
 

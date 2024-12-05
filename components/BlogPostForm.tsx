@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, {useState} from 'react'
 
-export default function BlogPostForm({onSubmit, initialValues}) {
+export default function BlogPostForm({onSubmit, initialValues, isEditable}) {
   const [title, setTitle] = useState(initialValues ? initialValues.title: '');
   const [content, setContent] = useState(initialValues ? initialValues.content: '');
 
@@ -12,12 +12,16 @@ export default function BlogPostForm({onSubmit, initialValues}) {
 
       <Text style={styles.label}>İçeriği giriniz: </Text>
       <TextInput style={styles.input} value={content} onChangeText={(text)=> setContent(text)}/>
-
-      <View style={styles.buttonMain}>
-        <TouchableOpacity style={styles.buttonView} onPress={()=>onSubmit(title, content)}>
-          <Text style={styles.buttonText}>Kaydet</Text>
-        </TouchableOpacity>
-      </View>
+      
+      <TouchableOpacity style={styles.buttonMain} onPress={()=>onSubmit(title, content)}>
+        <View style={styles.buttonView}>
+          {isEditable ? 
+            (<Text style={styles.buttonText}>Güncelle</Text>)
+            :
+            (<Text style={styles.buttonText}>Kaydet</Text>)
+          }
+        </View>
+      </TouchableOpacity>
     </View>
   )
 }

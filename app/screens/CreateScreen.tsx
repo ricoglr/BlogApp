@@ -6,7 +6,7 @@ import { Context } from '@/context/BlogContext'
 export default function CreateScreen({navigation}) {
   const {addBlogPost} = useContext(Context);
 
-  return (<BlogPostForm onSubmit={(title, content) => {
+  return (<BlogPostForm isEditable={false} onSubmit={(title, content) => {
     addBlogPost(title, content, ()=>navigation.navigate('Home'))
   }}/>
 );
